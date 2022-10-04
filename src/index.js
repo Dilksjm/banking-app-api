@@ -3,7 +3,7 @@ import {registerControllers} from './controllers';
 import cors from 'cors';
 
 const app = express()
-const port = 8080
+const port = process.env.PORT
 
 app.use(express.json())
 
@@ -19,5 +19,5 @@ app.use(function(req, res, next) {
 registerControllers(app)
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`app listening on port ${port}`)
 })
