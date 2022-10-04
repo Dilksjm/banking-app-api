@@ -23,14 +23,15 @@ export async function createAccount(account) {
 
 export async function postTransaction(email, transaction) {
     const account = await getAccountByEmail(email);
+    let balance = account.balance;
 
     if(transaction.type === WITHDRAW) {
-        account.balance -= transaction.amount
-        account.transactions.push(transaction);
+        balance -= transaction.amount
     } else if(transaction.type === DEPOSIT) {
-        account.balance += transaction.amount
-        account.transactions.push(transaction);
+        balance += transaction.amount
     }
 
-    await Account.updateOne(account)
+    const transactions = [...account.transactions, transaction]
+
+    await Account.updateOne({email: account.email}, {balance, transactions})
 }
