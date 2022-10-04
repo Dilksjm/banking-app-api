@@ -20,3 +20,5 @@ jobs:
           heroku_app_name: "dilksjm-banking-app" #Must be unique in Heroku
           heroku_email: "judilks@gmail.com"
           usedocker: true
+        env:
+          HD_MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
