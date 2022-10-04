@@ -2,6 +2,8 @@ FROM node:16
 
 WORKDIR /usr/src/app
 
-COPY ./lib ./lib
+COPY ./lib .
 
-CMD ["node", "./lib/index.js"]
+RUN ls -a
+
+CMD ["node", "./index.js"]
